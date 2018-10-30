@@ -40,6 +40,16 @@ console.log(happyHairDatabase.appointments[0])
 
 //Part II: async / await //
 
+let readFile = (filename) => {
+  return new Promise((resolve, reject) => {
+      fs.readFile(filename, 'utf8', (err, contents) => {
+          if (err) return reject(err)
+
+          resolve(contents)
+      })
+  })
+}
+
 const main = async () => {
   const contents1 = await readFile(__dirname + '/files/1.txt')
   console.log(contents1)
@@ -51,10 +61,11 @@ const main = async () => {
   console.log(contents3)
 }
 
-//(async () => {
+//why do we need to make the try catch block also async await?
+(async () => {
   try {
       await main()
   } catch (e) {
       console.log(e)
   }
-})()
+})() //IIFE
