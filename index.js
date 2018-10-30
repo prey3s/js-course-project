@@ -51,7 +51,7 @@ const main = async () => {
   console.log(contents3)
 }
 
-(async () => {
+//(async () => {
   try {
       await main()
   } catch (e) {
